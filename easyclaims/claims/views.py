@@ -2,5 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def hello_world():
-  return "Hello World"
+from django.http import HttpResponse
+
+def hello(request):
+    return HttpResponse("Hello, world")
