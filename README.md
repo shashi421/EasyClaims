@@ -3,6 +3,7 @@
 
 
    0. Clone the project from GitHub - run the command “git clone https://github.com/kalyanshashi/EasyClaims”
+     and run command "cd EasyClaims/"
 1. Run the command “git branch” to validate the branches as mentioned in the below sample output
           (venv) 19:08 ~/EasyClaims (staging)$ git branch
               develop
@@ -12,7 +13,7 @@
 2. Checkout to development branch - run command “git checkout develop”
 3. Create python3 environment - run command “python3 -m venv venv”
 4. Activate created virtual environment - run command “source venv/bin/activate”
-5. Install required packages to the project - run command “pip -r requirements.txt”
+5. Install required packages to the project - run command “pip install -r requirements.txt”
   6. “cd easyclaims”
   7. run “./manage.py makemigrations”
   8. run command “./manage.py migrate”
