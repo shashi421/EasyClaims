@@ -1,1 +1,1 @@
-web: gunicorn movies.wsgi --pythonpath=movies --log-file -
+web: gunicorn easyclaims.wsgi --pythonpath=easyclaims --log-file -
