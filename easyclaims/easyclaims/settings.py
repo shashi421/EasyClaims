@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '55u37oz(abazzp=3h=^qb+ujh=g6k*ddcdbj25k_&wedc0_yo&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['easyclaims-api-staging.herokuapp.com','easyclaims-api-prod.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'claims',
+    'dialogflow',
     ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
