@@ -12,35 +12,21 @@ import requests
 
 # Create your views here.
 @api_view(['POST'])
-def IdealWeight():
-    questionFromBot=json.loads(requests.body.decode("utf-8"))
-    res = makeResponse(questionFromBot)
-    res = json.dumps(res, indent=4)
-    return JsonResponse(res,content_type='application/json')
+def IdealWeight(arg):
+    try:
+        questionToBot=json.loads(arg.body)
 
-def makeResponse(req):
-    result = req.get('result')
-    parameters = result.get('parameters')
-    claimid = parameters.get('claimid')
-    claimstatus="approved"
-    speech = "claim status for your"+claimid+"is"+claimstatus
-    return { "speech":speech,
-             "displayText":speech,
-             "source":"claims-api"
-             }
+        response = requests.get(
+            'https://api.dialogflow.com/v1/query?v=20150910&lang=en&query='+questionToBot+'&sessionId=12345',
+            headers={
+                'Authorization': 'Bearer 9f00279a2f2a4be6b7bf30b3ccb46390'
+            }
+        )
 
+        # extracting data in json format
+        data = response.json()
+        ansFromBot = data['result']['fulfillment']['speech']
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return JsonResponse(ansFromBot,safe=False)
+    except ValueError as e:
+        return Response(e.args[0],status.HTTP_400_BAD_REQUEST)
