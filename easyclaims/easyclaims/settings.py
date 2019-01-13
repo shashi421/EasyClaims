@@ -52,6 +52,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'easyclaims.urls'
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}
 
 TEMPLATES = [
     {
