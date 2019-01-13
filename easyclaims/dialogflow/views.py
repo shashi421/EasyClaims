@@ -7,17 +7,22 @@ from rest_framework import status
 from django.http import JsonResponse
 from django.core import serializers
 from django.conf import settings
+from rest_framework.decorators import parser_classes
+from rest_framework.parsers import JSONParser
 import json
 import requests
+import io
 
 # Create your views here.
 @api_view(['POST'])
-def IdealWeight(arg):
+def IdealWeight(request):
     try:
-        questionToBot=json.loads(arg.body)
-
+        #stream = io.BytesIO(json)
+        questionToBot = JSONParser().parse(request)
+        #questionToBot=json.loads("request data")
+        question = questionToBot["question"]
         response = requests.get(
-            'https://api.dialogflow.com/v1/query?v=20150910&lang=en&query='+questionToBot+'&sessionId=12345',
+            'https://api.dialogflow.com/v1/query?v=20150910&lang=en&query='+question+'&sessionId=12345',
             headers={
                 'Authorization': 'Bearer 9f00279a2f2a4be6b7bf30b3ccb46390'
             }
