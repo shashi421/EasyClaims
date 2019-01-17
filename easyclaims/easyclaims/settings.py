@@ -65,8 +65,8 @@ REST_FRAMEWORK = {
 }
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'test@gmail.com'
-EMAIL_HOST_PASSWORD = 'test'
+EMAIL_HOST_USER = 'shashikalyan421@gmail.com'
+EMAIL_HOST_PASSWORD = '11551A0421'
 EMAIL_PORT = 587
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
