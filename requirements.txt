@@ -1,9 +1,15 @@
 certifi==2018.11.29
 chardet==3.0.4
 Django==2.1.5
-djangorestframework==3.9.0
+django-templated-mail==1.1.1
+djangorestframework==3.9.1
+djangorestframework-simplejwt==3.3
+djoser==1.4.0
 gunicorn==19.9.0
+httpie==1.0.2
 idna==2.8
+Pygments==2.3.1
+PyJWT==1.7.1
 pytz==2018.9
 requests==2.21.0
 urllib3==1.24.1
