@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('claims/', include('claims.urls')),
     path('dialogflow/', include('dialogflow.urls')),
+    path('', include('policy.urls')),
     re_path(r'^api/', include('djoser.urls')),
     re_path(r'^api/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.urls.authtoken')),
