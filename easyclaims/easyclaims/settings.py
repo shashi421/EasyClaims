@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'claims',
     'dialogflow',
     'djoser',
+    'policy',
     'rest_framework.authtoken',
     ]
 MIDDLEWARE = [
