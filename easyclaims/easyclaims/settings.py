@@ -109,11 +109,11 @@ WSGI_APPLICATION = 'easyclaims.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'easyclaims',
-        'USER': 'kalyan',
-        'PASSWORD': 'Lucky2109',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dad52p9jqjauc',
+        'USER': 'yflakqkppmkthv',
+        'PASSWORD': '40b977b73824f4ab833421f5f700cf8a496f01a24893fdec082acb585dbf0526',
+        'HOST': 'ec2-107-20-183-142.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
