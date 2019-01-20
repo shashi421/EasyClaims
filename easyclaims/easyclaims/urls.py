@@ -23,9 +23,5 @@ urlpatterns = [
     path('claims/', include('claims.urls')),
     path('dialogflow/', include('dialogflow.urls')),
     path('', include('policy.urls')),
-    re_path(r'^api/', include('djoser.urls')),
-    re_path(r'^api/', include('djoser.urls.jwt')),
-    path('auth/', include('djoser.urls.authtoken')),
-    #path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    #path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    url(r'^auth/', include('djoser.urls')),
 ]
