@@ -20,7 +20,7 @@ from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('claims/', include('claims.urls')),
+    path('', include('claims.urls')),
     path('dialogflow/', include('dialogflow.urls')),
     path('', include('policy.urls')),
     re_path(r'^api/', include('djoser.urls')),
