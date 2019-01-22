@@ -17,6 +17,5 @@ class List(models.Model):
       policyNo=models.CharField(max_length=8)
       claimNo =random.choice(range(1,8))
       typeOfClaim=models.CharField(max_length=6, choices=CLAIM_CHOICES, default='')
-      details=models.CharField(max_length=500)                                                                                                
-      docs=models.FileField()
+      details=models.CharField(max_length=500)
 
