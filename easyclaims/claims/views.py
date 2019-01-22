@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from claims.models import List
 from claims.serializers import ListForm
+from django.http import JsonResponse
 import logging
 logger = logging.getLogger(__name__)
 
@@ -45,10 +46,16 @@ class ClaimViewDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class ClaimStatusDetail(APIView):
-     def get_status(self,request,claimnumber):
-        snippets = List.objects.all()
-        snippets = snippets .filter(claimNo=claimnumber)
-        serializer =ListForm(snippets, many=True)
-        return Response(serializer.data.status)
+    def get_object(self, pk):
+        try:
+            return List.objects.get(pk=pk)
+        except List.DoesNotExist:
+            raise Http404
+    def post(self, request, pk, format=None):
+        serializer = ListForm(data=request.data)
+        snippet = self.get_object(pk)
+        serializer = ListForm(snippet)
+        claim_status = serializer.data['status']
+        return JsonResponse(claim_status,safe=False)
          
 
