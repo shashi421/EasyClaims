@@ -1,10 +1,11 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from . import views
+from .views import ClaimViewList,ClaimViewDetail
 
 urlpatterns = [
-    path('claims/', views.ClaimViewList.as_view()),
-    path('claims/<int:pk>/', views.ClaimViewDetail.as_view()),
+    path('claims/', ClaimViewList.as_view()),
+    path('claims/<int:pk>/', ClaimViewDetail.as_view()),
+    path('claims/<int:claimNo>/',ClaimStatusDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -43,4 +43,12 @@ class ClaimViewDetail(APIView):
         snippet = self.get_object(pk)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class ClaimStatusDetail(APIView):
+     def get_status(self,request,claimnumber):
+        snippets = List.objects.all()
+        snippets = snippets .filter(claimNo=claimnumber)
+        serializer =ListForm(snippets, many=True)
+        return Response(serializer.data.status)
+         
 
