@@ -2,8 +2,10 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import List
-from .serializers import ListForm
+from claims.models import List
+from claims.serializers import ListForm
+import logging
+logger = logging.getLogger(__name__)
 
 class ClaimViewList(APIView):
     def get(self, request, format=None):
@@ -12,6 +14,7 @@ class ClaimViewList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
+        logger.debug('In post function call')
         serializer = ListForm(data=request.data)
         if serializer.is_valid():
             serializer.save()
