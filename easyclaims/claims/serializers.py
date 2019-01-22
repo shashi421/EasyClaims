@@ -5,5 +5,5 @@ from rest_framework import serializers
 class ListForm(serializers.ModelSerializer):
     class Meta:
         model=List
-        fields=["name","dob","address","policyNo","claimNo","typeOfClaim","details","docs"]
+        fields=["name","dob","address","policyNo","claimNo","typeOfClaim","details"]
 
