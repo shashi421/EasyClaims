@@ -18,4 +18,5 @@ class List(models.Model):
       claimNo =random.choice(range(1,8))
       typeOfClaim=models.CharField(max_length=6, choices=CLAIM_CHOICES, default='')
       details=models.CharField(max_length=500)
+      status=models.CharField(max_length=500)
 
