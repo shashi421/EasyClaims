@@ -5,8 +5,7 @@ from rest_framework import status
 from claims.models import List
 from claims.serializers import ListForm
 from django.http import JsonResponse
-import logging
-logger = logging.getLogger(__name__)
+
 
 class ClaimViewList(APIView):
     def get(self, request, format=None):
@@ -15,7 +14,6 @@ class ClaimViewList(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        logger.debug('In post function call')
         serializer = ListForm(data=request.data)
         if serializer.is_valid():
             serializer.save()
