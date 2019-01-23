@@ -66,7 +66,7 @@ def dialogFLowClaimHelper(request):
     try:
         claim = ListForm(List.objects.get(pk=claimNo))
         claim_status = claim.data['status']
-        claim_status_json={"fullfillmenttext":claim_status}
+        claim_status_json={"fullfillmenttext":"claim_status"}
     except List.DoesNotExist:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
