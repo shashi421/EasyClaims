@@ -49,9 +49,10 @@ class ClaimStatusDetail(APIView):
             return List.objects.get(pk=pk)
         except List.DoesNotExist:
             raise Http404
-    def post(self, request, pk, format=None):
+    def post(self, request, format=None):
         serializer = ListForm(data=request.data)
-        snippet = self.get_object(pk)
+        claimNo = request.data['queryResult']['parameters']['number'] 
+        snippet = self.get_object(claimNo)
         serializer = ListForm(snippet)
         claim_status = serializer.data['status']
         return JsonResponse(claim_status,safe=False)
