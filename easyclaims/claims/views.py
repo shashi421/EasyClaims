@@ -57,20 +57,20 @@ class ClaimStatusDetail(APIView):
         return JsonResponse(claim_status,safe=False)
          
 @api_view(['POST'])
-def dialogFLowClaimHelper(request):
-    return Response({"fulfillmentText": "claim.data['status']"}, status=status.HTTP_200_OK)
-    
+def dialogFLowClaimHelper(request):    
     #fetch dialogueflow json
-    claimNo = request.data['queryResult']['parameters']['claimNo']    
+    claimNo = request.data['queryResult']['parameters']['number']    
     
     #call existing method
     try:
-        claim = ListForm(List.objects.get(pk=pk))
+        claim = ListForm(List.objects.get(pk=claimNo))
+        claim_status = claim.data['status']
+        
     except List.DoesNotExist:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
     #pass the result to dialogflow
     if claim.is_valid():
-        return Response({"fulfillmentText": claim.data['status']}, status=status.HTTP_200_OK)
+        return Response({"fulfillmentText": claim_status}, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
