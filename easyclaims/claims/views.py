@@ -58,6 +58,8 @@ class ClaimStatusDetail(APIView):
          
 @api_view(['POST'])
 def dialogFLowClaimHelper(request):
+    return Response({"fulfillmentText": "claim.data['status']"}, status=status.HTTP_200_OK)
+    
     #fetch dialogueflow json
     claimNo = request.data['queryResult']['parameters']['claimNo']    
     
