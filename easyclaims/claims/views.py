@@ -57,7 +57,7 @@ class ClaimStatusDetail(APIView):
         snippet = self.get_object(claimNo)
         serializer = ListForm(snippet)
         claim_status = serializer.data['status'] 
-        result= {"queryResult": { "fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}}
+        result= {"fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}
         return HttpResponse(json.dumps(result),content_type="application/json")
                                          
 
