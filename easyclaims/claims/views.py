@@ -65,12 +65,12 @@ def dialogFLowClaimHelper(request):
     try:
         claim = ListForm(List.objects.get(pk=claimNo))
         claim_status = claim.data['status']
-        
+        claim_status_json=claim_status
     except List.DoesNotExist:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
     #pass the result to dialogflow
     if claim.is_valid():
-        return Response({"fulfillmentText": claim_status}, status=status.HTTP_200_OK)
+        return Response(claim_status_json, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
