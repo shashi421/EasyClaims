@@ -59,8 +59,6 @@ class ClaimStatusDetail(APIView):
 
 class DialogFLowClaimHelper(APIView):
     def post(self, request, format=None):
-        return Response(request.data, status=status.HTTP_200_OK)
-        
         #fetch dialogueflow json
         claimNo = request.data['queryResult']['parameters']['number']    
 
