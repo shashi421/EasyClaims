@@ -55,7 +55,7 @@ class ClaimStatusDetail(APIView):
         snippet = self.get_object(claimNo)
         serializer = ListForm(snippet)
         claim_status = serializer.data['status'] 
-        return Response({"queryResult": { "fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}})
+        return jsonResponse({"queryResult": { "fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}})
                                          
 
 class DialogFLowClaimHelper(APIView):
