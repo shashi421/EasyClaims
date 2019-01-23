@@ -65,7 +65,7 @@ def dialogFLowClaimHelper(request):
     try:
         claim = ListForm(List.objects.get(pk=pk))
     except List.DoesNotExist:
-        raise Http404
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
     #pass the result to dialogflow
     if claim.is_valid():
