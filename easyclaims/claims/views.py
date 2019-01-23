@@ -4,8 +4,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from claims.models import List
 from claims.serializers import ListForm
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from rest_framework.decorators import api_view
+import json 
+
 
 class ClaimViewList(APIView):
     def get(self, request, format=None):
@@ -55,7 +57,8 @@ class ClaimStatusDetail(APIView):
         snippet = self.get_object(claimNo)
         serializer = ListForm(snippet)
         claim_status = serializer.data['status'] 
-        return jsonResponse({"queryResult": { "fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}})
+        result= {"queryResult": { "fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}}
+        return HttpResponse(json.dumps(result),content_type="application/json")
                                          
 
 class DialogFLowClaimHelper(APIView):
