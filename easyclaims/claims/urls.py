@@ -5,7 +5,7 @@ from claims.views import ClaimViewList,ClaimViewDetail,ClaimStatusDetail,DialogF
 urlpatterns = [
     path('claims/', ClaimViewList.as_view()),
     path('claims/<int:pk>/', ClaimViewDetail.as_view()),
-    path('claimstatus/<int:pk>/',ClaimStatusDetail.as_view()),
+    path('claimstatus/', ClaimStatusDetail.as_view()),
     path('claimhelper/', DialogFLowClaimHelper.as_view())
 ]
 
