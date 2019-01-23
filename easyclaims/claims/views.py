@@ -54,11 +54,9 @@ class ClaimStatusDetail(APIView):
         claimNo = request.data['queryResult']['parameters']['number'] 
         snippet = self.get_object(claimNo)
         serializer = ListForm(snippet)
-        claim_status = serializer.data['status']
-        return Response({ "speech":"the status of your claim number"+claimNo,
-                          "displayText":"speech",
-                          "source":claim_status
-                         },safe=False)
+        claim_status = serializer.data['status'] 
+        return Response({"queryResult": { "fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}})
+                                         
 
 class DialogFLowClaimHelper(APIView):
     def post(self, request, format=None):
