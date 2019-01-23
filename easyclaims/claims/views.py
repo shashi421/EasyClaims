@@ -5,7 +5,7 @@ from rest_framework import status
 from claims.models import List
 from claims.serializers import ListForm
 from django.http import JsonResponse
-
+from rest_framework.decorators import api_view
 
 class ClaimViewList(APIView):
     def get(self, request, format=None):
@@ -56,4 +56,20 @@ class ClaimStatusDetail(APIView):
         claim_status = serializer.data['status']
         return JsonResponse(claim_status,safe=False)
          
-
+@api_view(['POST'])
+def dialogFLowClaimHelper(request):
+    #fetch dialogueflow json
+    claimNo = request.data['queryResult']['parameters']['claimNo']    
+    
+    #call existing method
+    try:
+        claim = ListForm(List.objects.get(pk=pk))
+    except List.DoesNotExist:
+        raise Http404
+            
+    #pass the result to dialogflow
+    if claim.is_valid():
+        claim.save()
+        return Response({"fulfillmentText": claim.status}, status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
