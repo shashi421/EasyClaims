@@ -69,7 +69,6 @@ def dialogFLowClaimHelper(request):
             
     #pass the result to dialogflow
     if claim.is_valid():
-        claim.save()
-        return Response({"fulfillmentText": claim.status}, status=status.HTTP_200_OK)
+        return Response({"fulfillmentText": claim.data['status']}, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
