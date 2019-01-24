@@ -6,7 +6,6 @@ urlpatterns = [
     path('claims/', ClaimViewList.as_view()),
     path('claims/<int:pk>/', ClaimViewDetail.as_view()),
     path('claimstatus/', ClaimStatusDetail.as_view()),
-    path('claimhelper/', DialogFLowClaimHelper.as_view()),
     path('claimupdate/', ClaimUpdateDetail.as_view())
    ]
 
