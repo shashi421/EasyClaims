@@ -19,3 +19,4 @@ class List(models.Model):
       typeOfClaim=models.CharField(max_length=6, choices=CLAIM_CHOICES, default='')
       details=models.CharField(max_length=500)
       status=models.CharField(max_length=500, default='')
+      phoneNo=models.IntegerField(max_length=10)
