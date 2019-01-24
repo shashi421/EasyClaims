@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from claims.views import ClaimViewList,ClaimViewDetail,ClaimStatusDetail
+from claims.views import ClaimViewList,ClaimViewDetail,ClaimStatusDetail,ClaimUpdateDetail
 
 urlpatterns = [
     path('claims/', ClaimViewList.as_view()),
