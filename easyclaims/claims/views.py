@@ -61,9 +61,16 @@ class ClaimStatusDetail(APIView):
         return HttpResponse(json.dumps(result),content_type="application/json")
                                          
 
-class DialogFLowClaimHelper(APIView):
-    def post(self, request, format=None):
-        #fetch dialogueflow json
-        claimNo = request.data['queryResult']['parameters']['number'] 
-        claim = ListForm(List.objects.get(pk=claimNo))
-        return Response(claim.data, status=status.HTTP_200_OK)
+    def updateclaim(self, request,format=None):
+        serializer = ListForm(data=request.data)
+        claimNo = request.data['queryResult']['parameters']['number']
+        claimphone_no= request.data['queryResult']['parameters']['phone-number']
+        claimlocation=request.data['queryResult']['parameters']['geo-city']
+        serializer = ListForm(snippet)
+        serializer.data['phoneNo']=claimphone_no
+        serializer.data['location']=claimlocation
+        serializer.save(['phoneNo'])
+        serializer.save(['location'])
+        result= {"fulfillmentText":"details are updated successfully", "fulfillmentMessages": [{"text":{ "text": ["details are updated successfully"]}}]}
+        return HttpResponse(json.dumps(result),content_type="application/json")
+                                         
