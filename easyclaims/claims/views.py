@@ -60,7 +60,7 @@ class ClaimStatusDetail(APIView):
         result= {"fulfillmentText":claim_status, "fulfillmentMessages": [{"text":{ "text": [claim_status]}}]}
         return HttpResponse(json.dumps(result),content_type="application/json")
                                          
-
+class ClaimUpdateDetail(APIView):
     def updateclaim(self, request,format=None):
         serializer = ListForm(data=request.data)
         claimNo = request.data['queryResult']['parameters']['number']
