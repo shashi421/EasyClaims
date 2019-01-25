@@ -24,7 +24,7 @@ def IdealWeight(request):
         response = requests.get(
             'https://api.dialogflow.com/v1/query?v=20150910&lang=en&query='+question+'&sessionId=12345',
             headers={
-                'Authorization': 'Bearer bff28675c0c449e295b921a2a256a4aa'
+                'Authorization': 'Bearer aaa4b2120df34b37aea56f6e9d97a5ef'
             }
         )
 
